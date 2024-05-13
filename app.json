@@ -2,6 +2,8 @@
   "expo": {
     "name": "allintrapp",
     "slug": "allintrapp",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "plugins": ["expo-font"],
+    "backgroundColor": "#111621"
   }
 }

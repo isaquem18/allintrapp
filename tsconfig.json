@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": "./",
+    "noImplicitAny": false,
+    "typeRoots": ["src/@types"],
+    "paths": {
+      "@api/*": ["src/api/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@screens/*": ["src/screens/*"],
+      "@utils/*": ["src/utils/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@routes/*": ["src/routes/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"],
+      "@types/*": ["src/@types/*"]
+    }
+  },
+  "extends": "expo/tsconfig.base",
+  "exclude": ["node_modules"]
+}
