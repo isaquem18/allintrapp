@@ -5,18 +5,18 @@
     "strict": true,
     "baseUrl": "./",
     "noImplicitAny": false,
-    "typeRoots": ["src/@types"],
+    "typeRoots": ["src/shared/@types"],
     "paths": {
-      "@api/*": ["src/api/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
+      "@api/*": ["src/shared/api/*"],
+      "@assets/*": ["src/shared/assets/*"],
+      "@components/*": ["src/shared/components/*"],
       "@screens/*": ["src/screens/*"],
-      "@utils/*": ["src/utils/*"],
-      "@contexts/*": ["src/contexts/*"],
+      "@utils/*": ["src/shared/utils/*"],
+      "@contexts/*": ["src/shared/store/*"],
       "@routes/*": ["src/routes/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@styles/*": ["src/styles/*"],
-      "@types/*": ["src/@types/*"]
+      "@hooks/*": ["src/shared/services/*"],
+      "@styles/*": ["src/shared/styles/*"],
+      "@types/*": ["src/shared/@types/*"]
     }
   },
   "extends": "expo/tsconfig.base",
