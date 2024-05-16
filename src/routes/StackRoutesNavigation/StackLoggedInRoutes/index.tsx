@@ -1,12 +1,10 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { RootStackParamList } from '@routes/types';
-
 import Tabs from './TabRoutes';
 
 import * as Styles from './styles';
 
-const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
+const { Navigator, Screen } = createStackNavigator<RootStackParamListProps>();
 
 export default function StackRoutesIN() {
   return (

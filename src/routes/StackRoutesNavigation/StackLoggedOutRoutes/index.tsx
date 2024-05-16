@@ -2,9 +2,8 @@ import { LogBox } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import SignIn from '@screens/LoggedOutGroupPages/SignIn';
-import { RootStackParamList } from '@routes/types';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamListProps>();
 
 export default function StackRoutesOUT() {
   LogBox.ignoreLogs(['Sending']);

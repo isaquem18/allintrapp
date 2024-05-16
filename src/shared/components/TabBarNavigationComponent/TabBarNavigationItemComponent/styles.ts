@@ -1,58 +1,41 @@
-import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import { Dimensions, StyleSheet } from 'react-native';
 import theme from '@styles/theme';
-// import { PiHouseSimple } from 'react-icons/pi';
+import { RFValue } from 'react-native-responsive-fontsize';
 
-const { width } = Dimensions.get('screen');
+const { width } = Dimensions.get('window');
+const TAB_WIDTH = (width - 40) / 4;
 
-const TAB_BAR_WIDTH = width / 3;
-const ANIMATED_PART_HEIGHT = 3;
-
-export const animationStyles = StyleSheet.create({
+export const AnimatedButtonStyle = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    backgroundColor: theme.colors.light,
+    width: TAB_WIDTH,
+    height: 42,
+    backgroundColor: theme.colors.mainPink,
+    position: 'absolute',
+    marginHorizontal: 0,
+    borderRadius: 100,
+    zIndex: 10,
+    overflow: 'hidden',
   },
-  tabButton: {
+  item: {
     flex: 1,
-  },
-  innerView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  iconText: {
-    width: TAB_BAR_WIDTH,
-    textAlign: 'center',
-  },
-  animatedView: {
-    width: TAB_BAR_WIDTH,
-    height: ANIMATED_PART_HEIGHT,
-    backgroundColor: theme.colors.mainBackgroundColor,
-  },
-  animatedWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
+    height: 42,
   },
 });
 
-export const ScreenContainer = styled.View`
+export const AnimatedBottomView = styled.View`
   flex: 1;
-  background-color: ${theme.colors.mainBackgroundColor};
-`;
-
-// export const HomeIcon = styled(PiHouseSimple).attrs({
-//   width: 20,
-//   height: 20,
-// })``;
-
-export const ButtonTabContainer = styled.View`
   width: 100%;
-  height: 50px;
-  background-color: yellow;
+  align-items: center;
+  justify-content: space-between;
   padding: 0px 12px;
+  flex-direction: row;
 `;
-export const ButtonTab = styled.View`
-  border-radius: 30px;
-  background-color: green;
-  height: 100%;
+
+export const AnimatedBottomText = styled.Text`
+  color: ${theme.colors.light};
+  font-family: ${theme.fonts.poppins600};
+  font-size: ${RFValue(9)}px;
 `;

@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,7 +12,7 @@ import {
   Poppins_800ExtraBold,
   Poppins_900Black,
 } from '@expo-google-fonts/poppins';
-import SplashScreenLogoAnimation from 'src/shared/components/SplashScreenLogoAnimation';
+import { SplashScreenLogoAnimation } from 'src/shared/components/SplashScreenLogoAnimation';
 import AuthRoutes from '@routes/index';
 import theme from '@styles/theme';
 import { GlobalContextProvider } from '@contexts/index';

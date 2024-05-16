@@ -6,7 +6,7 @@ interface Props {
   setSplashAnimationIsLoading: (arg: boolean) => void;
 }
 
-export default function SplashScreenLogoAnimation({
+export function SplashScreenLogoAnimation({
   setSplashAnimationIsLoading,
 }: Props) {
   return (
