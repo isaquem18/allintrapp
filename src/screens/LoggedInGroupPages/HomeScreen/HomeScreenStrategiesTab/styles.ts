@@ -8,8 +8,3 @@ export const Container = styled.ScrollView.attrs({
 })`
   flex: 1;
 `;
-
-export const SectionContainer = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-`;

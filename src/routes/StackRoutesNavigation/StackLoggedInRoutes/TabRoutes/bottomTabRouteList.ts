@@ -1,28 +1,33 @@
-import Home from '@screens/LoggedInGroupPages/Home';
-import Tab2 from '@screens/LoggedInGroupPages/Tab2';
-import Tab3 from '@screens/LoggedInGroupPages/Tab3';
-import Tab4 from '@screens/LoggedInGroupPages/Tab4';
+import HomeScreen from '@screens/LoggedInGroupPages/HomeScreen';
+import ExploreScreen from '@screens/LoggedInGroupPages/ExploreScreen';
+import WalletScreen from '@screens/LoggedInGroupPages/WalletScreen';
+import ProfileScreen from '@screens/LoggedInGroupPages/ProfileScreen';
 
 import * as Styles from './styles';
 
 export const bottomTabRouteList: bottomTabRouteItemProps[] = [
-  { name: 'home', label: 'Home', component: Home, icon: Styles.HomeTabIcon },
   {
-    name: 'tab2',
+    name: 'HomeScreen',
+    label: 'Home',
+    component: HomeScreen,
+    icon: Styles.HomeTabIcon,
+  },
+  {
+    name: 'ExploreScreen',
     label: 'Explore',
-    component: Tab2,
+    component: ExploreScreen,
     icon: Styles.SearchTabIcon,
   },
   {
-    name: 'tab3',
+    name: 'WalletScreen',
     label: 'Wallet',
-    component: Tab3,
+    component: WalletScreen,
     icon: Styles.WalletTabIcon,
   },
   {
-    name: 'tab4',
+    name: 'ProfileScreen',
     label: 'Profile',
-    component: Tab4,
+    component: ProfileScreen,
     icon: Styles.ProfileTabIcon,
   },
 ];

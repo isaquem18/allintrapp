@@ -1,3 +1,7 @@
+import { Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+
 export default {
   fonts: {
     poppins200: 'poppins200',
@@ -28,5 +32,7 @@ export default {
   values: {
     touchOpacity: 0.8,
     paddingHorizontal: 16,
+    paddingBottom: width / 2,
+    paddingTop: 30,
   },
 };

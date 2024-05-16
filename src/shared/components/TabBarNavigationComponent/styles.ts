@@ -11,7 +11,7 @@ interface PaddingBottomWrapperProps {
 export const TabBarContainer = styled.View`
   width: ${width + 6}px;
   position: absolute;
-  bottom: -3px;
+  bottom: -15px;
   left: -3px;
   overflow: hidden;
   border-radius: 30px;
@@ -20,7 +20,7 @@ export const TabBarContainer = styled.View`
 
 export const TabBarBlur = styled(BlurView).attrs({
   blurType: 'dark',
-  blurAmount: 6,
+  blurAmount: 5,
 })`
   padding-left: 20px;
   padding-right: 20px;

@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
 import { useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components/native';
 import {
@@ -19,6 +19,7 @@ import { GlobalContextProvider } from '@contexts/index';
 import { NavigationContainerTheme } from '@styles/NavigationContainerStyle';
 
 export default function App() {
+  LogBox.ignoreLogs(['Sending']);
   const [splashAnimationIsLoading, setSplashAnimationIsLoading] =
     useState(false);
   const [fontsLoaded, fontError] = useFonts({

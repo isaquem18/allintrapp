@@ -1,28 +1,35 @@
 import styled from 'styled-components/native';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
 import HomeIconSVG from '@assets/icons/home.svg';
 import SearchIconSVG from '@assets/icons/search.svg';
 import WalletIconSVG from '@assets/icons/wallet.svg';
 import ProfileIconSVG from '@assets/icons/profile.svg';
 import AllintraLogoIconSVG from '@assets/logo/allintra-logo.svg';
+import BellIconSVG from '@assets/icons/bell.svg';
 import Theme from '@styles/theme';
 
 interface ScreenOptionsProps {
-  home: BottomTabNavigationOptions;
-  tab2: BottomTabNavigationOptions;
-  tab3: BottomTabNavigationOptions;
-  tab4: BottomTabNavigationOptions;
+  HomeScreen: BottomTabNavigationOptions;
+  ExploreScreen: BottomTabNavigationOptions;
+  WalletScreen: BottomTabNavigationOptions;
+  ProfileScreen: BottomTabNavigationOptions;
 }
 
 const AllintraLogoHeaderIcon = styled(AllintraLogoIconSVG).attrs(
   ({ theme }) => ({
     width: 100,
     height: 60,
-    backgroundColor: 'yellow',
+    backgroundColor: 'transparent',
     marginLeft: theme.values.paddingHorizontal,
   }),
 )``;
+
+export const BellIcon = styled(BellIconSVG).attrs(({ theme }) => ({
+  width: 24,
+  height: 24,
+  color: theme.colors.light,
+  marginRight: theme.values.paddingHorizontal,
+}))``;
 
 export const HomeTabIcon = styled(HomeIconSVG).attrs(({ theme }) => ({
   width: 18,
@@ -49,28 +56,56 @@ export const ProfileTabIcon = styled(ProfileIconSVG).attrs(({ theme }) => ({
 }))``;
 
 export const ScreenOptions: ScreenOptionsProps = {
-  home: {
+  HomeScreen: {
     title: '',
     headerLeft() {
       return <AllintraLogoHeaderIcon />;
     },
     headerRight() {
-      return <Text>BBBB</Text>;
+      return <BellIcon />;
     },
     headerStyle: {
       backgroundColor: Theme.colors.mainBackgroundColor,
       shadowOpacity: 0,
     },
   },
-  tab2: {
-    title: 'tab2',
+  ExploreScreen: {
+    title: '',
     headerLeft() {
-      return <Text>AAAA</Text>;
+      return <AllintraLogoHeaderIcon />;
     },
     headerRight() {
-      return <Text>BBBB</Text>;
+      return <BellIcon />;
+    },
+    headerStyle: {
+      backgroundColor: Theme.colors.mainBackgroundColor,
+      shadowOpacity: 0,
     },
   },
-  tab3: {},
-  tab4: {},
+  WalletScreen: {
+    title: '',
+    headerLeft() {
+      return <AllintraLogoHeaderIcon />;
+    },
+    headerRight() {
+      return <BellIcon />;
+    },
+    headerStyle: {
+      backgroundColor: Theme.colors.mainBackgroundColor,
+      shadowOpacity: 0,
+    },
+  },
+  ProfileScreen: {
+    title: '',
+    headerLeft() {
+      return <AllintraLogoHeaderIcon />;
+    },
+    headerRight() {
+      return <BellIcon />;
+    },
+    headerStyle: {
+      backgroundColor: Theme.colors.mainBackgroundColor,
+      shadowOpacity: 0,
+    },
+  },
 };

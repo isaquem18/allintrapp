@@ -2,10 +2,10 @@ import { Text } from 'react-native';
 
 import * as S from './styles';
 
-export default function Tab4() {
+export default function WalletScreen() {
   return (
     <S.Container>
-      <Text>Tab4</Text>
+      <Text>WalletScreen</Text>
     </S.Container>
   );
 }

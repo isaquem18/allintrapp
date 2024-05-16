@@ -9,7 +9,7 @@ function PaddingBottomWrapper({ children }) {
   const insets = SafeArea.useSafeAreaInsets();
   return (
     <Styles.PaddingBottomWrapper
-      paddingBottom={Math.max(insets.bottom, 20) + 20}
+      paddingBottom={Math.max(insets.bottom, 20) + 30}
     >
       {children}
     </Styles.PaddingBottomWrapper>
