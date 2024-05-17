@@ -15,7 +15,7 @@ export const TabBarContainer = styled.View`
   left: -3px;
   overflow: hidden;
   border-radius: 30px;
-  border: 1px solid ${({ theme }) => theme.colors.light}60;
+  border: 1.2px solid ${({ theme }) => theme.colors.light}20;
 `;
 
 export const TabBarBlur = styled(BlurView).attrs({

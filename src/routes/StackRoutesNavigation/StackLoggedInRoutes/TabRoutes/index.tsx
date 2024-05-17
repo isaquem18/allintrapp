@@ -2,9 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { TabBarNavigationComponent } from '@components/TabBarNavigationComponent';
+import { bottomTabRouteList } from './bottomTabRouteList';
 
 import * as Styles from './styles';
-import { bottomTabRouteList } from './bottomTabRouteList';
 
 const Tab = createBottomTabNavigator();
 

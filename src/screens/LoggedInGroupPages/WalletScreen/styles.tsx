@@ -1,33 +1,34 @@
 import styled from 'styled-components/native';
 import { MaterialTopTabNavigationOptions } from '@react-navigation/material-top-tabs';
+import { RFValue } from 'react-native-responsive-fontsize';
+
+import BrokersIconSVG from '@assets/icons/brokers.svg';
+import CryptoIconSVG from '@assets/icons/cripto.svg';
 
 import theme from '@styles/theme';
-import StrategiesIconSVG from '@assets/icons/strategies.svg';
-import FeedIconSVG from '@assets/icons/feed.svg';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 interface ScreenOptionsProps {
   Navigator: MaterialTopTabNavigationOptions;
-  HomeScreenFeedTab: MaterialTopTabNavigationOptions;
-  HomeScreenStrategiesTab: MaterialTopTabNavigationOptions;
+  WalletScreenCryptoassetsTab: MaterialTopTabNavigationOptions;
+  WalletScreenBrokerTab: MaterialTopTabNavigationOptions;
 }
 
 interface TopTabNavigationColor {
   iconColor: string;
 }
 
-const StrategiesTabIcon = styled(
-  StrategiesIconSVG,
-).attrs<TopTabNavigationColor>(({ iconColor = 'f00' }) => ({
-  width: 16,
-  height: 16,
-  color: iconColor,
-}))``;
-
-const FeedTabIcon = styled(FeedIconSVG).attrs<TopTabNavigationColor>(
+const BrokersTabIcon = styled(BrokersIconSVG).attrs<TopTabNavigationColor>(
   ({ iconColor = 'f00' }) => ({
-    width: 16,
-    height: 16,
+    width: 18,
+    height: 18,
+    color: iconColor,
+  }),
+)``;
+
+const CryptoTabIcon = styled(CryptoIconSVG).attrs<TopTabNavigationColor>(
+  ({ iconColor = 'f00' }) => ({
+    width: 18,
+    height: 18,
     color: iconColor,
   }),
 )``;
@@ -57,16 +58,16 @@ export const ScreenOptions: ScreenOptionsProps = {
     tabBarActiveTintColor: theme.colors.mainPink,
     tabBarInactiveTintColor: theme.colors.gray5,
   },
-  HomeScreenFeedTab: {
-    title: 'Feed',
+  WalletScreenCryptoassetsTab: {
+    title: 'Criptoativos',
     tabBarIcon(props) {
-      return <FeedTabIcon iconColor={props.color} />;
+      return <CryptoTabIcon iconColor={props.color} />;
     },
   },
-  HomeScreenStrategiesTab: {
-    title: 'Strategies',
+  WalletScreenBrokerTab: {
+    title: 'Corretoras',
     tabBarIcon(props) {
-      return <StrategiesTabIcon iconColor={props.color} />;
+      return <BrokersTabIcon iconColor={props.color} />;
     },
   },
 };
