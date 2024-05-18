@@ -12,10 +12,12 @@
       "@components/*": ["src/shared/components/*"],
       "@screens/*": ["src/screens/*"],
       "@utils/*": ["src/shared/utils/*"],
-      "@contexts/*": ["src/shared/store/*"],
+      "@store/*": ["src/shared/store/*"],
       "@routes/*": ["src/routes/*"],
-      "@hooks/*": ["src/shared/services/*"],
       "@styles/*": ["src/shared/styles/*"],
+      "@services/*": ["src/shared/services/*"],
+      "@reducers/*": ["src/shared/reducers/*"],
+      "@context/*": ["src/shared/context/*"],
       "@types/*": ["src/shared/@types/*"]
     }
   },

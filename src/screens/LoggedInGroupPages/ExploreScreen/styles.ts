@@ -1,12 +1,28 @@
+import theme from '@styles/theme';
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView.attrs({
+export const ScreenContainer = styled.View`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
+
+export const FlatListComponent = styled.FlatList.attrs({
   contentContainerStyle: {
-    paddingTop: 20,
-    paddingBottom: 60,
+    paddingHorizontal: theme.values.paddingHorizontal,
+    paddingTop: theme.values.paddingTop,
+    paddingBottom: 20,
   },
-  showsVerticalScrollIndicator: false,
+  contentInsetAdjustmentBehavior: 'automatic',
+  initialNumToRender: 20,
 })`
   flex: 1;
-  padding: 3px;
+`;
+
+export const Loader = styled.ActivityIndicator.attrs({
+  color: theme.colors.light,
+  size: 'small',
+})`
+  margin-bottom: 20px;
 `;

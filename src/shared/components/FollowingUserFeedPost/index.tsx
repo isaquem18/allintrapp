@@ -1,6 +1,12 @@
+import { LineAreaChartComponent } from '@components/ChartsComponents/LineAreaChartComponent';
+
 import * as Styles from './styles';
 
-export function FollowingUserFeedPost() {
+interface Props {
+  item: number;
+}
+
+export function FollowingUserFeedPost({ item }: Props) {
   return (
     <Styles.ScreenContainer>
       <Styles.HeaderContainer>
@@ -10,7 +16,9 @@ export function FollowingUserFeedPost() {
         </Styles.UserDataContainer>
         <Styles.PostTime>2min</Styles.PostTime>
       </Styles.HeaderContainer>
+      <Styles.UserPost>Este é um grafico em tempo real</Styles.UserPost>
       <Styles.DataVisualizationContainer />
+      {item === 1 && <LineAreaChartComponent />}
       <Styles.DataVisualizationContainer />
       <Styles.CallToActionContainer />
     </Styles.ScreenContainer>

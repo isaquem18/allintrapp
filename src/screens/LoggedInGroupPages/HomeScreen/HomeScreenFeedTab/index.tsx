@@ -6,8 +6,8 @@ export default function HomeScreenFeedTab() {
   return (
     <Styles.Container>
       <Styles.PostList
-        data={Array(20).fill('a')}
-        renderItem={() => <FollowingUserFeedPost />}
+        data={[1]}
+        renderItem={() => <FollowingUserFeedPost item={1} />}
       />
     </Styles.Container>
   );

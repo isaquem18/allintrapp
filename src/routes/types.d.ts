@@ -8,4 +8,5 @@ interface bottomTabRouteItemProps {
 type RootStackParamListProps = {
   SignIn: undefined;
   Tabs: undefined;
+  CriptoDetails: undefined;
 };

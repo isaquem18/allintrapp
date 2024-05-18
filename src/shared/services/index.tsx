@@ -1,4 +1,3 @@
-import Cinema from 'src/shared/services/Cinema';
-import useUserDetails from './UserDetails';
+import { usePricesStream } from '@services/usePricesStream';
 
-export { Cinema, useUserDetails };
+export { usePricesStream };

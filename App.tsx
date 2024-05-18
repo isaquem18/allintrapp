@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { StatusBar, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components/native';
+
 import {
   useFonts,
   Poppins_200ExtraLight,
@@ -15,8 +16,8 @@ import {
 import { SplashScreenLogoAnimation } from 'src/shared/components/SplashScreenLogoAnimation';
 import AuthRoutes from '@routes/index';
 import theme from '@styles/theme';
-import { GlobalContextProvider } from '@contexts/index';
 import { NavigationContainerTheme } from '@styles/NavigationContainerStyle';
+import { GlobalContextProvider } from 'src/shared/context';
 
 export default function App() {
   LogBox.ignoreLogs(['Sending']);
