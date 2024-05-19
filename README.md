@@ -11,7 +11,7 @@ yarn
 
 2.
 ```
-npx pos-install ios
+npx pod-install ios
 ```
 
 3.
