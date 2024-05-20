@@ -19,7 +19,16 @@ npx pod-install ios
 npx expo run:ios
 ```
 
-Decidi criar um prototipo do app da própria allintra durante o teste prático pois julguei que seria interessante  demonstrar minhas habilidades simulando o contexto da empresa no geral. O design do site foi encontrato no próprio site da empresa, tentei representá-lo com a maior fidedignidade possível, apesar de não esta com as medidas de design em mãos e o tempo ser curto. 
+Decidi criar um prototipo do app da própria allintra durante o teste prático pois julguei que seria interessante demonstrar minhas habilidades simulando o contexto da empresa no geral. O design do site foi encontrato no próprio site da empresa, tentei representá-lo com a maior fidedignidade possível, apesar de não estar com as medidas de design em mãos e o tempo ser curto.
+
+A logo de animação inicial foi gerada utilizando o software da suíte adobe, o After Effects, onde pude exportá-lo em formato mp4 após a conclusão e converte-lo em formato json para utilização no aplicativo através da lib Lottie.
+
+O esboço do que seria a gestão de estados do app foi construída utilizando a própria ContextAPI do React-native, criando reducers e simulando um pouco do cenário do Redux.
+
+As animações de bottom tab foram criadas utilizando mecanismos próprios do react-native, com o método "animated" e as requisições às apis foram utilizadas com axios.
+
+A navegação entre as telas foi utilizada a react-navigation, onde busquei organizar a hierarquia da pastas de telas e rotas seguindo o fluxo de navegação do app, tornando-a mais intuitiva para quem for trabalhar no código.
+
 
 O primeiro gráfico de linha foi alimentado pela binance, no link:
 ```https://api.binance.com/api/v3/trades?symbol=BTCUSDT&limit=100```
