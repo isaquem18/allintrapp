@@ -29,6 +29,7 @@ As animações de bottom tab foram criadas utilizando a lib 'react-native-reanim
 
 A navegação entre as telas foi utilizada a react-navigation, onde busquei organizar a hierarquia da pastas de telas e rotas seguindo o fluxo de navegação do app, tornando-a mais intuitiva para quem for trabalhar no código.
 
+Vale ressaltar que todo o app está seguinto padrão definido em eslint para organização e legibilidade do código, alem de ter sido criado um arquivo .husky que possibilita a automação de tarefas antes de eventos do Git, como commits e pushes.
 
 O primeiro gráfico de linha foi alimentado pela binance, no link:
 ```https://api.binance.com/api/v3/trades?symbol=BTCUSDT&limit=100```
