@@ -25,7 +25,7 @@ A logo de animação inicial foi gerada utilizando o software da suíte adobe, o
 
 O esboço do que seria a gestão de estados do app foi construída utilizando a própria ContextAPI do React-native, criando reducers e simulando um pouco do cenário do Redux.
 
-As animações de bottom tab foram criadas utilizando mecanismos próprios do react-native, com o método "animated" e as requisições às apis foram utilizadas com axios.
+As animações de bottom tab foram criadas utilizando a lib 'react-native-reanimated' que com o uso dos "worklets" permite que as animações rodem em thread fora da principal e não prejudiquem a performance do app, e as requisições às apis foram utilizadas com axios.
 
 A navegação entre as telas foi utilizada a react-navigation, onde busquei organizar a hierarquia da pastas de telas e rotas seguindo o fluxo de navegação do app, tornando-a mais intuitiva para quem for trabalhar no código.
 
