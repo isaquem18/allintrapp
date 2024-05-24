@@ -17,6 +17,9 @@
     <img src="https://github.com/isaquem18/allintrapp/assets/67105969/8a48904a-c7ab-40e4-826a-d4ac856bc135" alt="aaaaaa4" style="width: 200px; margin-right: 10px;">
     <img src="https://github.com/isaquem18/allintrapp/assets/67105969/fbeca6ed-0d92-44ae-a406-1cd6bddd0fff" alt="aaaaaaaa5" style="width: 200px; margin-right: 10px;">
 </div>
+
+<br/><br/>
+## Comparativo com dados realtime da TRADINGVIEW
 <div style="display: flex;">
   <img src="https://github.com/isaquem18/allintrapp/assets/67105969/06371cba-cfff-4f9b-b009-34bb5461589b" alt="aaaaaaaa2" style="width: "100%";  margin-right: 10px;">
 </div>
