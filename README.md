@@ -2,7 +2,7 @@
 **********
 
 
-> Esta branch se trata de um segunda versão, que fiz apenas para praticar alguns conceitos, porém realizada após o prazo máximo estipulado para teste, caso deseje ver a primeira verão, bastar alterar para branch "main"
+> Esta branch se trata de um segunda versão, que fiz apenas para praticar alguns conceitos, porém realizada após o prazo máximo estipulado para teste, caso deseje ver a primeira versão, bastar alterar para branch "main"
 
 
 
