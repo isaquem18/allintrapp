@@ -1,4 +1,14 @@
 
+**********
+
+
+> Esta branch se trata de um segunda versão, que fiz apenas para praticar alguns conceitos, porém realizada após o prazo máximos extipulado para teste, caso deseje ver a primeira verão, bastar alterar para branch "main"
+
+
+
+**********
+
+
 ![Capa(1)](https://github.com/isaquem18/allintrapp/assets/67105969/a43d18fb-8606-429c-93d9-d60c52e8f7cd)
 
 <div style="display: flex;">
