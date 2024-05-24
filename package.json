@@ -10,6 +10,7 @@
     "prepare": "husky install",
     "test:unit": "jest --config=jest-unit.config.ts --watchAll",
     "test:int": "jest --config=jest-integration.config.ts --watchAll",
+    "test:e2e": "detox test --configuration ios.sim.debug",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },

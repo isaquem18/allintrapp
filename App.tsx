@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import '@types/jest';
 
 import { useState } from 'react';
 import { StatusBar, LogBox } from 'react-native';
