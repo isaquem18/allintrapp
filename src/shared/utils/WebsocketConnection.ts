@@ -7,23 +7,23 @@ export const createWebSocketConnection = (
   const ws = new WebSocket(url);
   try {
     ws.onopen = () => {
-      console.log('WebSocket connection opened on', url);
+      // WebSocket connection opened on
     };
 
     ws.onmessage = throttle((event) => {
       const data = JSON.parse(event.data);
       onMessage(data);
-    }, 2000);
+    }, 1500);
 
     ws.onclose = () => {
-      console.log('WebSocket connection closed');
+      // WebSocket connection closed
     };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket error:', error);
+    ws.onerror = () => {
+      // WebSocket error:
     };
   } catch (e) {
-    console.error('WebSocket error');
+    // WebSocket error
   }
 
   return ws;

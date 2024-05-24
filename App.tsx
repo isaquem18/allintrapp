@@ -1,9 +1,11 @@
 import 'react-native-gesture-handler';
+import '@types/jest';
 
 import { useState } from 'react';
 import { StatusBar, LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components/native';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 import {
   useFonts,
@@ -13,11 +15,12 @@ import {
   Poppins_800ExtraBold,
   Poppins_900Black,
 } from '@expo-google-fonts/poppins';
-import { SplashScreenLogoAnimation } from 'src/shared/components/SplashScreenLogoAnimation';
+import { SplashScreenLogoAnimation } from '@components/SplashScreenLogoAnimation';
 import AuthRoutes from '@routes/index';
 import theme from '@styles/theme';
 import { NavigationContainerTheme } from '@styles/NavigationContainerStyle';
 import { GlobalContextProvider } from 'src/shared/context';
+import queryClient from '@data/react-query-client';
 
 export default function App() {
   LogBox.ignoreLogs(['Sending']);
@@ -46,11 +49,13 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" />
       <GlobalContextProvider>
-        <ThemeProvider theme={theme}>
-          <NavigationContainer theme={NavigationContainerTheme}>
-            <AuthRoutes />
-          </NavigationContainer>
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme}>
+            <NavigationContainer theme={NavigationContainerTheme}>
+              <AuthRoutes />
+            </NavigationContainer>
+          </ThemeProvider>
+        </QueryClientProvider>
       </GlobalContextProvider>
     </>
   );

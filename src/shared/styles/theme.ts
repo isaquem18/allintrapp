@@ -16,11 +16,23 @@ export default {
     mainPink: '#D23A86',
     light: '#FFFFFF',
     dark: '#000000',
+    gray200: '#dedede',
+    gray500: '#b0b0b0',
+    lightBlue: '#40dfef',
+    lightGreen: '#b4ff9f',
+    success: '#4fbb35',
   },
   values: {
     touchOpacity: 0.8,
     paddingHorizontal: 16,
     paddingBottom: width / 2,
     paddingTop: 30,
+  },
+
+  skeletonStyles: {
+    backgroundColor: '#b4b4b4',
+    foregroundColor: '#535353',
+    opacity: 0.5,
+    speed: 1.5,
   },
 };

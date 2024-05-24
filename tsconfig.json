@@ -9,16 +9,20 @@
     "paths": {
       "@api/*": ["src/shared/api/*"],
       "@assets/*": ["src/shared/assets/*"],
-      "@components/*": ["src/shared/components/*"],
-      "@screens/*": ["src/screens/*"],
+      "@components/*": ["src/presentation/components/*"],
+      "@screens/*": ["src/presentation/screens/*"],
       "@utils/*": ["src/shared/utils/*"],
       "@store/*": ["src/shared/store/*"],
-      "@routes/*": ["src/routes/*"],
+      "@routes/*": ["src/presentation/routes/*"],
       "@styles/*": ["src/shared/styles/*"],
-      "@services/*": ["src/shared/services/*"],
       "@reducers/*": ["src/shared/reducers/*"],
       "@context/*": ["src/shared/context/*"],
-      "@types/*": ["src/shared/@types/*"]
+      "@types/*": ["src/shared/@types/*"],
+      "@services/*": ["src/services/*"],
+      "@entities/*": ["src/domain/entities/*"],
+      "@usecases/*": ["src/domain/usecases/*"],
+      "@data/*": ["src/data/*"],
+      "@__test__/*": ["src/__test__/*"]
     }
   },
   "extends": "expo/tsconfig.base",
