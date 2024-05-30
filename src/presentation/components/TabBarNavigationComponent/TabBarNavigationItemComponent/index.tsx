@@ -82,13 +82,13 @@ export function TabBarNavigationItemComponent({
   }));
 
   const handleBottomTabPress = (isFocused: boolean, route: RouteProp<any>) => {
-    const event = navigation.emit({
-      type: 'tabPress',
-      target: route.key,
-      canPreventDefault: true,
-    });
+    // const event = navigation.emit({
+    //   type: 'tabPress',
+    //   target: route.key,
+    //   canPreventDefault: true,
+    // });
 
-    if (!isFocused && !event.defaultPrevented) {
+    if (!isFocused) {
       animateYUp();
       navigation.navigate({ name: route.name, merge: true, params: {} });
     }

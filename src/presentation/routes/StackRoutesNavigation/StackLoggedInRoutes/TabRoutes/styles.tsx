@@ -8,7 +8,7 @@ import AllintraLogoIconSVG from '@assets/logo/allintra-logo.svg';
 import BellIconSVG from '@assets/icons/bell.svg';
 import theme from '@styles/theme';
 import WalletScreenTabHeader from '@screens/LoggedInGroupPages/WalletScreen/WalletScreenTabHeader';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { SwitchTabHeaderComponent } from '@components/SwitchTabHeaderComponent';
 
 interface ScreenOptionsProps {
@@ -67,7 +67,7 @@ function HeaderRightComponent() {
     <View
       style={{
         height: '100%',
-        width: '100%',
+        width: Platform.OS === 'ios' ? '100%' : '70%',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginRight: theme.values.paddingHorizontal,
@@ -93,6 +93,7 @@ export const ScreenOptions: ScreenOptionsProps = {
     headerStyle: {
       backgroundColor: theme.colors.mainBackgroundColor,
       shadowOpacity: 0,
+      elevation: 0,
     },
   },
   ExploreScreen: {

@@ -36,7 +36,11 @@ export default function App() {
   if ((!fontsLoaded && !fontError) || splashAnimationIsLoading) {
     return (
       <>
-        <StatusBar barStyle="light-content" />
+        <StatusBar
+          barStyle="light-content"
+          translucent
+          backgroundColor="transparent"
+        />
         <SplashScreenLogoAnimation
           setSplashAnimationIsLoading={setSplashAnimationIsLoading}
         />
@@ -46,7 +50,11 @@ export default function App() {
 
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
       <GlobalContextProvider>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>

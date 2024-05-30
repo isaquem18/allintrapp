@@ -37,8 +37,8 @@ export const AnimatedBottomText = styled(Animated.Text)`
   font-size: ${RFValue(11)}px;
 `;
 
-export const BottomTabButton = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.7,
+export const BottomTabButton = styled.Pressable.attrs({
+  hitSlop: 10,
 })`
   flex: 1;
   align-items: center;

@@ -27,9 +27,9 @@ export const PieChartLib = styled(PieChart).attrs<PieChartLibProps>(
       fontFamily: theme.fonts.poppins800,
     },
     centerTextRadiusPercent: 100,
-    holeRadius: width * 0.196,
+    holeRadius: 80,
     holeColor: processColor('transparent'),
-    transparentCircleRadius: 93,
+    transparentCircleRadius: 90,
     transparentCircleColor: processColor('#00000030'),
     maxAngle: 360,
     legend: {
