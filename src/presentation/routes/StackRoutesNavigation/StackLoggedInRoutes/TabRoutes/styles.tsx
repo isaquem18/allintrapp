@@ -8,6 +8,8 @@ import AllintraLogoIconSVG from '@assets/logo/allintra-logo.svg';
 import BellIconSVG from '@assets/icons/bell.svg';
 import theme from '@styles/theme';
 import WalletScreenTabHeader from '@screens/LoggedInGroupPages/WalletScreen/WalletScreenTabHeader';
+import { View } from 'react-native';
+import { SwitchTabHeaderComponent } from '@components/SwitchTabHeaderComponent';
 
 interface ScreenOptionsProps {
   HomeScreen: BottomTabNavigationOptions;
@@ -17,8 +19,8 @@ interface ScreenOptionsProps {
 }
 
 const AllintraLogoHeaderIcon = styled(AllintraLogoIconSVG).attrs({
-  width: 100,
-  height: 60,
+  width: 80,
+  height: 21,
   backgroundColor: 'transparent',
   marginLeft: theme.values.paddingHorizontal,
 })``;
@@ -27,32 +29,57 @@ export const BellIcon = styled(BellIconSVG).attrs({
   width: 24,
   height: 24,
   color: theme.colors.light,
-  marginRight: theme.values.paddingHorizontal,
 })``;
 
 export const HomeTabIcon = styled(HomeIconSVG).attrs({
-  width: 18,
-  height: 18,
+  width: 19,
+  height: 19,
   color: theme.colors.light,
-})``;
+})`
+  box-shadow: 0px 0px 15px ${theme.colors.light};
+`;
 
 export const SearchTabIcon = styled(SearchIconSVG).attrs({
-  width: 20,
-  height: 20,
+  width: 22,
+  height: 22,
   color: theme.colors.light,
 })``;
 
 export const WalletTabIcon = styled(WalletIconSVG).attrs({
-  width: 20,
-  height: 20,
+  width: 22,
+  height: 22,
   color: theme.colors.light,
 })``;
 
 export const ProfileTabIcon = styled(ProfileIconSVG).attrs({
-  width: 20,
-  height: 20,
+  width: 22,
+  height: 22,
   color: theme.colors.light,
 })``;
+
+export const HeaderAvatar = styled.Image.attrs({})`
+  width: 32px;
+  height: 32px;
+`;
+
+function HeaderRightComponent() {
+  return (
+    <View
+      style={{
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginRight: theme.values.paddingHorizontal,
+        flexDirection: 'row',
+      }}
+    >
+      <SwitchTabHeaderComponent label="Enable" />
+      <BellIcon />
+      <HeaderAvatar source={require('@assets/images/avatar.png')} />
+    </View>
+  );
+}
 
 export const ScreenOptions: ScreenOptionsProps = {
   HomeScreen: {
@@ -61,7 +88,7 @@ export const ScreenOptions: ScreenOptionsProps = {
       return <AllintraLogoHeaderIcon />;
     },
     headerRight() {
-      return <BellIcon />;
+      return <HeaderRightComponent />;
     },
     headerStyle: {
       backgroundColor: theme.colors.mainBackgroundColor,
@@ -74,7 +101,7 @@ export const ScreenOptions: ScreenOptionsProps = {
       return <AllintraLogoHeaderIcon />;
     },
     headerRight() {
-      return <BellIcon />;
+      return <HeaderRightComponent />;
     },
     headerStyle: {
       backgroundColor: theme.colors.mainBackgroundColor,
@@ -97,7 +124,7 @@ export const ScreenOptions: ScreenOptionsProps = {
       return <AllintraLogoHeaderIcon />;
     },
     headerRight() {
-      return <BellIcon />;
+      return <HeaderRightComponent />;
     },
     headerStyle: {
       backgroundColor: theme.colors.mainBackgroundColor,

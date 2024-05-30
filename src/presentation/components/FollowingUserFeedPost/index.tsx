@@ -1,5 +1,6 @@
 import { LineAreaChartComponent } from '@components/ChartsComponents/LineAreaChartComponent';
 
+// import { CandleStickChartComponent } from '@components/ChartsComponents/CandleStickChartComponent';
 import * as Styles from './styles';
 
 interface Props {
@@ -19,6 +20,7 @@ export function FollowingUserFeedPost({ item }: Props) {
       <Styles.UserPost>Este é um grafico em tempo real</Styles.UserPost>
       <Styles.DataVisualizationContainer />
       {item === 1 && <LineAreaChartComponent />}
+      {/* {item === 1 && <CandleStickChartComponent />} */}
       <Styles.DataVisualizationContainer />
       <Styles.CallToActionContainer />
     </Styles.ScreenContainer>

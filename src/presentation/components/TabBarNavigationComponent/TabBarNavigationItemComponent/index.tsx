@@ -1,6 +1,10 @@
-import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import { useEffect } from 'react';
-import Animated, {
+import { Dimensions } from 'react-native';
+import * as SafeArea from 'react-native-safe-area-context';
+import {
+  Easing,
+  Extrapolation,
+  interpolate,
   runOnUI,
   useAnimatedStyle,
   useSharedValue,
@@ -10,10 +14,13 @@ import {
   TabNavigationState,
   ParamListBase,
   NavigationHelpers,
+  RouteProp,
 } from '@react-navigation/native';
+
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs';
 
 import { bottomTabRouteList } from '@routes/StackRoutesNavigation/StackLoggedInRoutes/TabRoutes/bottomTabRouteList';
+
 import * as Styles from './styles';
 
 type Props = {
@@ -23,10 +30,7 @@ type Props = {
 };
 
 const { width } = Dimensions.get('window');
-
 const TAB_WIDTH = (width - 40) / 4;
-
-const styles = StyleSheet.create(Styles.AnimatedButtonStyle);
 
 export function TabBarNavigationItemComponent({
   state,
@@ -34,81 +38,108 @@ export function TabBarNavigationItemComponent({
   descriptors,
 }: Props) {
   const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  const TitleButtonOpacity = useSharedValue(0);
   const focusedTab = state.index;
+  const Icon = bottomTabRouteList[focusedTab]?.icon;
 
-  const handleAnimate = (index: number) => {
+  const animateX = (index: number) => {
     'worklet';
 
-    translateX.value = withTiming(index * TAB_WIDTH + index, {
-      duration: 200,
-    });
+    translateX.value = withTiming(index * TAB_WIDTH + index, { duration: 200 });
   };
+
+  const animateYUp = () => {
+    'worklet';
+
+    translateY.value = -40;
+    TitleButtonOpacity.value = 0;
+  };
+
+  const animateYDown = () => {
+    'worklet';
+
+    translateY.value = withTiming(0, {
+      duration: 500,
+      easing: Easing.in(Easing.elastic(1.0)),
+    });
+
+    TitleButtonOpacity.value = withTiming(1, { duration: 300 });
+  };
+
+  const translateXStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
+
+  const translateYStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+    opacity: interpolate(
+      TitleButtonOpacity.value,
+      [0, 1],
+      [0, 1],
+      Extrapolation.CLAMP,
+    ),
+  }));
+
+  const handleBottomTabPress = (isFocused: boolean, route: RouteProp<any>) => {
+    const event = navigation.emit({
+      type: 'tabPress',
+      target: route.key,
+      canPreventDefault: true,
+    });
+
+    if (!isFocused && !event.defaultPrevented) {
+      animateYUp();
+      navigation.navigate({ name: route.name, merge: true, params: {} });
+    }
+  };
+
   useEffect(() => {
-    runOnUI(handleAnimate)(focusedTab);
+    runOnUI(animateX)(focusedTab);
+    runOnUI(animateYDown)();
   }, [focusedTab]);
 
-  const rnStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: translateX.value }],
-    };
-  });
-
-  const Icon = bottomTabRouteList[focusedTab]?.icon;
+  function PaddingBottomWrapper({ children }) {
+    const insets = SafeArea.useSafeAreaInsets();
+    return (
+      <Styles.PaddingBottomWrapper
+        paddingBottom={Math.max(insets.bottom, 20) + 30}
+      >
+        {children}
+      </Styles.PaddingBottomWrapper>
+    );
+  }
 
   return (
     <>
-      <Animated.View style={[styles.container, rnStyle]}>
+      <PaddingBottomWrapper>
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const isFocused = state.index === index;
+          const TabIcon = bottomTabRouteList[index]?.icon;
+
+          return (
+            <Styles.BottomTabButton
+              key={route.key}
+              accessibilityRole="button"
+              accessibilityState={isFocused ? { selected: true } : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.testID}
+              onPress={() => handleBottomTabPress(isFocused, route)}
+            >
+              <TabIcon />
+            </Styles.BottomTabButton>
+          );
+        })}
+      </PaddingBottomWrapper>
+      <Styles.AnimatedView style={[translateXStyle]}>
         <Styles.AnimatedBottomView>
           <Icon />
-          <Styles.AnimatedBottomText>
+          <Styles.AnimatedBottomText style={translateYStyle}>
             {bottomTabRouteList[focusedTab]?.label}
           </Styles.AnimatedBottomText>
         </Styles.AnimatedBottomView>
-      </Animated.View>
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate({
-              name: route.name,
-              merge: true,
-              params: {},
-            });
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        const AllIconTabs = bottomTabRouteList[index]?.icon;
-        return (
-          <TouchableOpacity
-            key={route.key}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.testID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={styles.item}
-          >
-            <AllIconTabs />
-          </TouchableOpacity>
-        );
-      })}
+      </Styles.AnimatedView>
     </>
   );
 }

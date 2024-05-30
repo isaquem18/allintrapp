@@ -1,7 +1,12 @@
 import throttle from 'lodash.throttle';
 
+interface createWebSocketConnectionProps {
+  url: string;
+  interval?: number;
+}
+
 export const createWebSocketConnection = (
-  url: string,
+  { url, interval = 1500 }: createWebSocketConnectionProps,
   onMessage: (event: any) => void,
 ) => {
   const ws = new WebSocket(url);
@@ -13,7 +18,7 @@ export const createWebSocketConnection = (
     ws.onmessage = throttle((event) => {
       const data = JSON.parse(event.data);
       onMessage(data);
-    }, 1500);
+    }, interval);
 
     ws.onclose = () => {
       // WebSocket connection closed

@@ -5,10 +5,6 @@ import theme from '@styles/theme';
 
 const { width } = Dimensions.get('screen');
 
-interface PaddingBottomWrapperProps {
-  paddingBottom: number;
-}
-
 export const TabBarContainer = styled.View`
   width: ${width + 6}px;
   position: absolute;
@@ -17,20 +13,22 @@ export const TabBarContainer = styled.View`
   overflow: hidden;
   border-radius: 30px;
   border: 1.2px solid ${theme.colors.light}20;
+  align-items: center;
 `;
 
 export const TabBarBlur = styled(BlurView).attrs({
   blurType: 'dark',
   blurAmount: 5,
 })`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+`;
+
+export const TabBarBlurView = styled.View`
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 14px;
   bottom: 0px;
-  flex: 1px;
-`;
-
-export const PaddingBottomWrapper = styled.View<PaddingBottomWrapperProps>`
-  flex-direction: row;
-  padding-bottom: ${({ paddingBottom }) => paddingBottom}px;
+  width: ${width}px;
 `;

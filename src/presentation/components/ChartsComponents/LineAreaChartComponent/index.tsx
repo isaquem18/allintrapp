@@ -32,7 +32,9 @@ export function LineAreaChartComponent() {
 
   useEffect(() => {
     const ws = createWebSocketConnection(
-      process.env.WS_BINANCE_API_LINECHART_BTCUSDT_WEBSOCKET,
+      {
+        url: `${process.env.BINANCE_WS_URL}/bnbusdt@trade`,
+      },
       (message) => {
         const newPrice = parseFloat(message.p);
         const newDataPoint = { x: new Date(message.T), y: newPrice };

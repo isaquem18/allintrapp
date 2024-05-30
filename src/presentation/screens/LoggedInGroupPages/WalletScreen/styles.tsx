@@ -1,11 +1,14 @@
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
-import { MaterialTopTabNavigationOptions } from '@react-navigation/material-top-tabs';
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import { MaterialTopTabNavigationOptions } from '@react-navigation/material-top-tabs';
 import BrokersIconSVG from '@assets/icons/brokers.svg';
 import CryptoIconSVG from '@assets/icons/cripto.svg';
 
 import theme from '@styles/theme';
+
+const { width } = Dimensions.get('window');
 
 interface ScreenOptionsProps {
   Navigator: MaterialTopTabNavigationOptions;
@@ -38,11 +41,23 @@ export const ScreenOptions: ScreenOptionsProps = {
     tabBarGap: 0,
     tabBarStyle: {
       backgroundColor: theme.colors.mainBackgroundColor,
-      borderBottomWidth: 1,
       borderBottomColor: `${theme.colors.gray500}50`,
+      borderBottomWidth: 1,
+    },
+    tabBarContentContainerStyle: {
+      marginTop: 4,
+      marginBottom: -3,
     },
     tabBarItemStyle: {
       flexDirection: 'row',
+      width: width / 2 - theme.values.paddingHorizontal,
+    },
+    tabBarIndicatorStyle: {
+      backgroundColor: theme.colors.mainPink,
+      height: 2,
+      position: 'absolute',
+      bottom: -1.5,
+      marginLeft: theme.values.paddingHorizontal,
     },
     tabBarLabelStyle: {
       fontFamily: theme.fonts.poppins600,
@@ -50,15 +65,8 @@ export const ScreenOptions: ScreenOptionsProps = {
       marginTop: -4,
       textTransform: 'none',
     },
-    tabBarIndicatorStyle: {
-      backgroundColor: theme.colors.mainPink,
-      height: 2,
-      position: 'absolute',
-      bottom: -1,
-    },
-    tabBarContentContainerStyle: {
-      marginTop: 4,
-      marginBottom: -3,
+    tabBarIconStyle: {
+      marginLeft: 34,
     },
     tabBarActiveTintColor: theme.colors.mainPink,
     tabBarInactiveTintColor: theme.colors.gray500,

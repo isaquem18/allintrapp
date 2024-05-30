@@ -55,7 +55,9 @@ export default function CriptoDetails() {
         let historicalData = await fetchHistoricalData();
 
         ws = createWebSocketConnection(
-          process.env.WS_BINANCE_API_CANDLESTICK,
+          {
+            url: 'wss://stream.binance.com:9443/ws/btcusdt@kline_1m',
+          },
           (messageData) => {
             if (messageData.k) {
               const newCandle: CandlestickData = {

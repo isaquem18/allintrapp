@@ -13,14 +13,14 @@ export default function HomeScreen() {
       screenOptions={Styles.ScreenOptions.Navigator}
     >
       <Tab.Screen
-        name="HomeScreenFeedTab"
-        component={HomeScreenFeedTab}
-        options={Styles.ScreenOptions.HomeScreenFeedTab}
-      />
-      <Tab.Screen
         name="HomeScreenStrategiesTab"
         component={HomeScreenStrategiesTab}
         options={Styles.ScreenOptions.HomeScreenStrategiesTab}
+      />
+      <Tab.Screen
+        name="HomeScreenFeedTab"
+        component={HomeScreenFeedTab}
+        options={Styles.ScreenOptions.HomeScreenFeedTab}
       />
     </Tab.Navigator>
   );

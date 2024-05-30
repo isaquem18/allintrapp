@@ -51,7 +51,6 @@
     "react-native-tab-view": "^3.5.2",
     "react-native-vector-icons": "^10.1.0",
     "react-native-wagmi-charts": "^2.4.1",
-    "redux": "^5.0.1",
     "styled-components": "^6.1.11",
     "ts-node": "^10.9.2",
     "typescript": "~5.3.3",
