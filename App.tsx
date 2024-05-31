@@ -18,13 +18,13 @@ import { SplashScreenLogoAnimation } from '@components/SplashScreenLogoAnimation
 import AuthRoutes from '@routes/index';
 import theme from '@styles/theme';
 import { NavigationContainerTheme } from '@styles/NavigationContainerStyle';
-import { GlobalContextProvider } from 'src/shared/context';
+import { GlobalContextProvider } from '@context/index';
 import queryClient from '@data/react-query-client';
 
 export default function App() {
   LogBox.ignoreLogs(['Sending']);
   const [splashAnimationIsLoading, setSplashAnimationIsLoading] =
-    useState(false);
+    useState(true);
   const [fontsLoaded, fontError] = useFonts({
     poppins200: Poppins_200ExtraLight,
     poppins400: Poppins_400Regular,
