@@ -1,159 +1,108 @@
-import { useState } from 'react';
-import { Button, processColor } from 'react-native';
-import { CandleStickChart } from 'react-native-charts-wrapper';
-import styled from 'styled-components/native';
-import { useQuery } from '@tanstack/react-query';
+// ChartComponent.tsx
+import { useCallback, useRef, useState } from 'react';
 
-import { handleUpdateRange } from '@utils/handle';
-import { useChartData } from '@usecases/useChartData';
-import { SkeletonLoader } from './SkeletonLoader';
+import { CandlestickChart } from 'react-native-wagmi-charts';
+import { View } from 'react-native';
+import { createWebSocketConnection } from '@utils/WebsocketConnection';
+import { useFocusEffect } from '@react-navigation/native';
+import axios from 'axios';
 
-const Container = styled.View`
-  flex: 1;
-`;
+import { styles } from './styles';
 
-const CurrentValueContainer = styled.View`
-  align-items: center;
-  margin: 10px 0;
-`;
-
-const CurrentValue = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-`;
-
-const ButtonContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 20px;
-`;
-
-const ChartContainer = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 300px;
-`;
+interface CandlestickData {
+  timestamp: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}
 
 export function CandleStickChartComponent() {
-  const { fetchBTCUSDTPrices } = useChartData();
-  const [currentPrice] = useState<string>('USD 0.00');
-  // const [lastPoint] = useState<{
-  //   x: Date;
-  //   open: number;
-  //   close: number;
-  //   high: number;
-  //   low: number;
-  // }>({
-  //   x: new Date(),
-  //   open: 0,
-  //   close: 0,
-  //   high: 0,
-  //   low: 0,
-  // });
-  const [range, setRange] = useState('1m');
+  const [data, setData] = useState<CandlestickData[]>([]);
+  const getHistoricalRef = useRef(false);
 
-  const { isLoading } = useQuery({
-    queryKey: ['BTCUSDTChartPrices', range],
-    queryFn: () => fetchBTCUSDTPrices({ interval: range, limit: 100 }),
-    refetchInterval: 1000 * 60 * 3,
-  });
+  const fetchHistoricalData = async () => {
+    if (getHistoricalRef.current) return [];
+    const endTime = Date.now();
+    const startTime = endTime - 1 * 24 * 60 * 1000; // 30 days in milliseconds
 
-  // useEffect(() => {
-  //   let ws;
-  //   WEBSOCKET_BTCUSDTPrices().then((value) => {
-  //     ws = value.ws;
-  //   });
+    const response = await axios.get('https://api.binance.com/api/v3/klines', {
+      params: {
+        symbol: 'BTCUSDT',
+        interval: '1m',
+        startTime,
+        endTime,
+      },
+    });
 
-  //   return () => {
-  //     ws?.close();
-  //   };
-  // }, []);
+    const formattedResponse = response.data.map((item: any) => ({
+      timestamp: item[0],
+      open: parseFloat(item[1]),
+      high: parseFloat(item[2]),
+      low: parseFloat(item[3]),
+      close: parseFloat(item[4]),
+    }));
 
-  // const chartData = Array.isArray(data) ? [...data, lastPoint] : [];
+    getHistoricalRef.current = true;
+    return formattedResponse;
+  };
 
-  // const candleData = chartData.map((point: BTCUSDTResponseEntity) => ({
-  //   shadowH: point.High,
-  //   shadowL: point.Low,
-  //   open: point.Open,
-  //   close: point.Close,
-  //   x: new Date(point?.OpenTime)?.getTime() || new Date().getTime(),
-  // }));
+  useFocusEffect(
+    useCallback(() => {
+      let ws;
+      (async () => {
+        let historicalData = await fetchHistoricalData();
+
+        ws = createWebSocketConnection(
+          {
+            url: 'wss://stream.binance.com:9443/ws/btcusdt@kline_1m',
+          },
+          (messageData) => {
+            if (messageData.k) {
+              const newCandle: CandlestickData = {
+                timestamp: messageData.k.t,
+                open: parseFloat(messageData.k.o),
+                high: parseFloat(messageData.k.h),
+                low: parseFloat(messageData.k.l),
+                close: parseFloat(messageData.k.c),
+              };
+
+              setData((prevData) => {
+                const updatedData = prevData.slice();
+                const lastCandle = updatedData[updatedData.length - 1];
+
+                if (
+                  lastCandle &&
+                  lastCandle.timestamp === newCandle.timestamp
+                ) {
+                  updatedData[updatedData.length - 1] = newCandle;
+                } else {
+                  updatedData.push(newCandle);
+                }
+
+                const newData = [...historicalData, ...updatedData];
+
+                historicalData = [];
+                return newData;
+              });
+            }
+          },
+        );
+      })();
+
+      return () => {
+        ws?.close();
+      };
+    }, []),
+  );
 
   return (
-    <Container>
-      {isLoading ? (
-        <SkeletonLoader />
-      ) : (
-        <ChartContainer>
-          <CandleStickChart
-            style={{ flex: 1, width: '100%' }}
-            data={{
-              dataSets: [
-                {
-                  values: [],
-                  label: 'Candle Data',
-                  config: {
-                    highlightColor: processColor('white'),
-                    shadowColor: processColor('white'),
-                    shadowWidth: 1,
-                    shadowColorSameAsCandle: true,
-                    increasingColor: processColor('green'),
-                    increasingPaintStyle: 'FILL',
-                    decreasingColor: processColor('red'),
-                  },
-                },
-              ],
-            }}
-            xAxis={{
-              valueFormatter: 'date',
-              valueFormatterPattern: 'MM/dd',
-              position: 'BOTTOM',
-              labelRotationAngle: 45,
-              granularity: 1,
-            }}
-            yAxis={{
-              left: {
-                drawGridLines: false,
-              },
-              right: {
-                enabled: false,
-              },
-            }}
-            legend={{
-              enabled: false,
-            }}
-            marker={{
-              enabled: true,
-              markerColor: processColor('#F0C0FF8C'),
-              textColor: processColor('white'),
-            }}
-          />
-        </ChartContainer>
-      )}
-
-      <CurrentValueContainer>
-        <CurrentValue>{currentPrice}</CurrentValue>
-      </CurrentValueContainer>
-      <ButtonContainer>
-        <Button
-          title="1 Day"
-          onPress={() => setRange(handleUpdateRange('1d'))}
-        />
-        <Button
-          title="5 Days"
-          onPress={() => setRange(handleUpdateRange('5d'))}
-        />
-        <Button
-          title="1 Month"
-          onPress={() => setRange(handleUpdateRange('1m'))}
-        />
-        <Button
-          title="6 Months"
-          onPress={() => setRange(handleUpdateRange('6m'))}
-        />
-      </ButtonContainer>
-    </Container>
+    <View style={styles.mid}>
+      <CandlestickChart.Provider data={data}>
+        <CandlestickChart width={300} height={120}>
+          <CandlestickChart.Candles />
+        </CandlestickChart>
+      </CandlestickChart.Provider>
+    </View>
   );
 }

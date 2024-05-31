@@ -11,8 +11,8 @@ export const ScreenContainer = styled.View`
 export const FlatListComponent = styled.FlatList.attrs({
   contentContainerStyle: {
     paddingHorizontal: theme.values.paddingHorizontal,
+    paddingBottom: theme.values.paddingBottom,
     paddingTop: theme.values.paddingTop,
-    paddingBottom: 20,
   },
   contentInsetAdjustmentBehavior: 'automatic',
   initialNumToRender: 20,

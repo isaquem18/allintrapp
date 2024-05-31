@@ -21,6 +21,8 @@ export default {
     lightBlue: '#40dfef',
     lightGreen: '#b4ff9f',
     success: '#4fbb35',
+    flatSuccess: '#05C8A5',
+    negative: '#D9652E',
   },
   values: {
     touchOpacity: 0.8,

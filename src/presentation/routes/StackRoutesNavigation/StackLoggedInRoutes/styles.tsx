@@ -2,6 +2,8 @@ import theme from '@styles/theme';
 import styled from 'styled-components/native';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import BackButtonIconSVG from '@assets/icons/back.svg';
+import { Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export const TabOptions = {
   headerShown: false,
@@ -18,6 +20,16 @@ const BackButtonIcon = styled(BackButtonIconSVG).attrs({
   marginRight: theme.values.paddingHorizontal,
 })``;
 
+function HeaderLeftComponent() {
+  const navigation = useNavigation();
+
+  return (
+    <Pressable hitSlop={10} onPress={() => navigation.goBack()}>
+      <BackButtonIcon stroke={theme.colors.mainPink} />
+    </Pressable>
+  );
+}
+
 export const CriptoDetailsOptions: StackNavigationOptions = {
   headerShown: true,
   headerTitle: '',
@@ -28,7 +40,7 @@ export const CriptoDetailsOptions: StackNavigationOptions = {
   },
   headerLeftLabelVisible: false,
   headerLeft() {
-    return <BackButtonIcon stroke={theme.colors.mainPink} />;
+    return <HeaderLeftComponent />;
   },
   headerLeftContainerStyle: {
     paddingLeft: 6,
