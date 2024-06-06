@@ -12,10 +12,17 @@
 ![Capa(1)](https://github.com/isaquem18/allintrapp/assets/67105969/a43d18fb-8606-429c-93d9-d60c52e8f7cd)
 
 <div style="display: flex;">
-    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/52276c67-8067-49a6-9576-22de10f76b34" alt="aaaaaa1" style="width: 200px;  margin-right: 10px;">
-    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/0ed89fa9-899c-476f-8cd8-2c9a013e9ffd" alt="aaaaa3" style="width: 200px;  margin-right: 10px;">
-    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/8a48904a-c7ab-40e4-826a-d4ac856bc135" alt="aaaaaa4" style="width: 200px; margin-right: 10px;">
-    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/fbeca6ed-0d92-44ae-a406-1cd6bddd0fff" alt="aaaaaaaa5" style="width: 200px; margin-right: 10px;">
+    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/52276c67-8067-49a6-9576-22de10f76b34" alt="aaaaaa1" style="width: 150px;  margin-right: 10px;">
+    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/0ed89fa9-899c-476f-8cd8-2c9a013e9ffd" alt="aaaaa3" style="width: 150px;  margin-right: 10px;">
+    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/8a48904a-c7ab-40e4-826a-d4ac856bc135" alt="aaaaaa4" style="width: 150px; margin-right: 10px;">
+    <img src="https://github.com/isaquem18/allintrapp/assets/67105969/fbeca6ed-0d92-44ae-a406-1cd6bddd0fff" alt="aaaaaaaa5" style="width: 150px; margin-right: 10px;">
+</div>
+
+<br/><br/>
+## Proposta de design em tablet
+Tendo em vista que a forma de se segurar um tablet, pelo seu tamanho, se da pelas laterais, um menu lateral costuma ser mais confortável de navegar entre as páginas tendo em vista sua proximidade do polegar.
+<div>
+  <img src="https://github.com/isaquem18/allintrapp/assets/67105969/9438094a-4400-4964-a419-6bce8a232d78" alt="aaaaaaaa2" style="height: 400px;";  margin-right: 10px;">  
 </div>
 
 <br/><br/>
