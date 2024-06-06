@@ -10,6 +10,7 @@ import theme from '@styles/theme';
 import WalletScreenTabHeader from '@screens/LoggedInGroupPages/WalletScreen/WalletScreenTabHeader';
 import { Platform, View } from 'react-native';
 import { SwitchTabHeaderComponent } from '@components/SwitchTabHeaderComponent';
+import { isSmartphone } from '@utils/Storage';
 
 interface ScreenOptionsProps {
   HomeScreen: BottomTabNavigationOptions;
@@ -84,6 +85,7 @@ function HeaderRightComponent() {
 export const ScreenOptions: ScreenOptionsProps = {
   HomeScreen: {
     title: '',
+    headerShown: isSmartphone(),
     headerLeft() {
       return <AllintraLogoHeaderIcon />;
     },
@@ -98,6 +100,7 @@ export const ScreenOptions: ScreenOptionsProps = {
   },
   ExploreScreen: {
     title: '',
+    headerShown: isSmartphone(),
     headerLeft() {
       return <AllintraLogoHeaderIcon />;
     },
@@ -121,6 +124,7 @@ export const ScreenOptions: ScreenOptionsProps = {
   },
   ProfileScreen: {
     title: '',
+    headerShown: isSmartphone(),
     headerLeft() {
       return <AllintraLogoHeaderIcon />;
     },

@@ -7,6 +7,7 @@ import BrokersIconSVG from '@assets/icons/brokers.svg';
 import CryptoIconSVG from '@assets/icons/cripto.svg';
 
 import theme from '@styles/theme';
+import { isSmartphone } from '@utils/Storage';
 
 const { width } = Dimensions.get('window');
 
@@ -50,7 +51,12 @@ export const ScreenOptions: ScreenOptionsProps = {
     },
     tabBarItemStyle: {
       flexDirection: 'row',
-      width: width / 2 - theme.values.paddingHorizontal,
+      width: (() => {
+        const fullTabWidth = width / 2 - theme.values.paddingHorizontal;
+        const tabletWidth = (width - theme.values.sidebarWidth) / 2;
+
+        return isSmartphone() ? fullTabWidth : tabletWidth;
+      })(),
     },
     tabBarIndicatorStyle: {
       backgroundColor: theme.colors.mainPink,

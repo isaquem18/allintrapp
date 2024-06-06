@@ -23,12 +23,15 @@ export default {
     success: '#4fbb35',
     flatSuccess: '#05C8A5',
     negative: '#D9652E',
+    borderColor: '#FFFFFF40',
   },
   values: {
     touchOpacity: 0.8,
     paddingHorizontal: 16,
     paddingBottom: width / 2,
     paddingTop: 30,
+    maxSmarthPhoneWidth: 550,
+    sidebarWidth: 140,
   },
 
   skeletonStyles: {

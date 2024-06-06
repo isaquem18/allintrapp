@@ -6,6 +6,7 @@ import { MaterialTopTabNavigationOptions } from '@react-navigation/material-top-
 import theme from '@styles/theme';
 import StrategiesIconSVG from '@assets/icons/strategies.svg';
 import FeedIconSVG from '@assets/icons/feed.svg';
+import { isSmartphone } from '@utils/Storage';
 
 const { width } = Dimensions.get('window');
 
@@ -49,7 +50,16 @@ export const ScreenOptions: ScreenOptionsProps = {
     },
     tabBarItemStyle: {
       flexDirection: 'row',
-      width: width / 2 - theme.values.paddingHorizontal,
+      width: (() => {
+        const fullTabWidth = width / 2 - theme.values.paddingHorizontal;
+        const tabletWidth =
+          (width -
+            theme.values.sidebarWidth -
+            theme.values.paddingHorizontal * 2) /
+          2;
+
+        return isSmartphone() ? fullTabWidth : tabletWidth;
+      })(),
     },
     tabBarIndicatorStyle: {
       backgroundColor: theme.colors.mainPink,

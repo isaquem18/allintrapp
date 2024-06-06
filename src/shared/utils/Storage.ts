@@ -1,25 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import theme from '@styles/theme';
+import { Dimensions } from 'react-native';
 
-export async function storeData(name: string, value: any) {
-  try {
-    if (!value) {
-      AsyncStorage.removeItem(name);
-      return;
-    }
+export function isSmartphone() {
+  const { width } = Dimensions.get('screen');
 
-    await AsyncStorage.setItem(name, JSON.stringify(value));
-  } catch (e) {
-    // error
-  }
-}
-
-export async function getData(name: string) {
-  let jsonValue: any;
-  try {
-    jsonValue = await AsyncStorage.getItem(name);
-  } catch (e) {
-    // error
-  }
-
-  return JSON.parse(jsonValue) || false;
+  return !(width > theme.values.maxSmarthPhoneWidth);
 }
